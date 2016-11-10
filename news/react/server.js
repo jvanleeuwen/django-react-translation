@@ -17,13 +17,15 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
-  const { language, path } = req.body;
+  const { locale_path } = req.body;
 
-  fetch(`http://localhost:8000${path}`)
+  fetch(`http://localhost:8000${locale_path}`)
     .then((response) => {
       if (response.status >= 400) {
         throw new Error('Bad response from server');
       }
+
+      const language = response.headers.get('content-language');
 
       response
         .json()

@@ -10,11 +10,8 @@ from .utils.memoize import memoize
 
 
 @memoize
-def react_render(language, path):
-    data = {
-        'language': language,
-        'path': path,
-    }
+def react_render(locale_path):
+    data = {'locale_path': locale_path}
 
     try:
         r = requests.post('http://localhost:3010/', json=data)
@@ -29,11 +26,10 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
 
-        language = get_language(),
-        path = reverse('news:json-catalog'),
+        locale_path = reverse('news:json-catalog'),
 
         context.update({
-            'client': react_render(language, path),
+            'client': react_render(locale_path),
         })
 
         return context
