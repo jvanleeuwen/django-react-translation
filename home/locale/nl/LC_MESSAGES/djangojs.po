@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-08 15:35+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: react/containers/App.js:13
+msgid "It works"
+msgstr "Het werkt"
+
+#: react/containers/App.js:16
+msgctxt "client"
+msgid "It works contextual"
+msgstr "Het werkt voor de client"
+
+#: react/containers/App.js:19
+msgctxt "counselor"
+msgid "It works contextual"
+msgstr "Het werkt voor de behandelaar"
+
+#: react/containers/App.js:22
+#, javascript-format
+msgid "There is one client"
+msgid_plural "There are %s clients"
+msgstr[0] "Er is één cliënt"
+msgstr[1] "Er zijn %s cliënten"
+
+#: react/containers/App.js:25
+#, javascript-format
+msgid "There is one counselor"
+msgid_plural "There are %s counselors"
+msgstr[0] "Er is één behandelaar"
+msgstr[1] "Er zijn %s behandelaren"

@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "react",
+    "esnext"
+  ],
+  "plugins": [
+    // ["babel-gettext-plugin", {
+    //  "functionNames": {
+    //    "__": ["msgid"]
+    //  }
+    // }],
+  ]
+}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block catalog %}
+  <script type="text/javascript" src="{% url 'news:javascript-catalog' %}"></script>
+{% endblock %}
+
+{% block menu %}
+  {% include 'menu.html' with active='news' %}
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+
+  <script src="{% static 'news.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="four columns">
+      <h5>Jed</h5>
+      <span>Via server-side render</span>
+
+      {% spaceless %}
+        <div id="container-jed-server">
+          {{ client }}
+        </div>
+      {% endspaceless %}
+    </div>
+
+    <div class="four columns">
+      <h5>Jed</h5>
+      <span>Via window.django</span>
+      <div id="container-jed"></div>
+    </div>
+
+    <div class="four columns">
+      <h5>I18Next</h5>
+      <span>Async via XHR</span>
+      <div id="container-i18next"></div>
+    </div>
+  </div>
+{% endblock %}

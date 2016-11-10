@@ -1,0 +1,62 @@
+{% load i18n static languages %}
+
+{% get_current_language as language %}
+{% get_available_languages as languages %}
+
+<!doctype html>
+
+<html lang="{{ language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Translate">
+  <meta name="author" content="Jeroen van Leeuwen">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Translate</title>
+
+  {% for lang_code, lang_name in languages %}
+    {% ifnotequal lang_code language %}
+      <link rel="alternate" hreflang="{{ lang_code }}" href="{% change_lang lang_code %}" />
+    {% endifnotequal %}
+  {% endfor %}
+
+  <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  {% block catalog %}{% endblock %}
+</head>
+
+<body>
+  <div class="container">
+    <header class="row">
+      <div class="four columns">
+        {% block menu %}
+          {% include 'menu.html' %}
+        {% endblock %}
+      </div>
+      <div class="one column u-pull-right">
+        <nav>
+          <a class="flag {% if language == 'en' %}active{% endif %}" hreflang="en" href="{% change_lang 'en' %}">🇬🇧</a>
+          <a class="flag {% if language == 'nl' %}active{% endif %}" hreflang="nl" href="{% change_lang 'nl' %}">🇳🇱</a>
+        </nav>
+      </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <div class="row">
+      <nav>
+        <a href="i18n/">catalog</a> |
+        <a href="i18n/json/">json catalog</a>
+      </nav>
+    </div>
+
+  </div>
+
+  {% block js %}
+    <script src="{% static 'vendor.js' %}"></script>
+  {% endblock %}
+</body>
+</html>

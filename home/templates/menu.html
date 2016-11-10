@@ -1,0 +1,18 @@
+{% load i18n %}
+
+{% trans 'Home' as home %}
+{% trans 'News' as news %}
+
+<nav>
+  {% if active != 'home' %}
+    <a href="{% url 'home:index' %}">{{ home }}</a>
+  {% else %}
+    <span>{{ home }}</span>
+  {% endif %}
+
+  {% if active != 'news' %}
+    <a href="{% url 'news:index' %}">{{ news }}</a>
+  {% else %}
+    <span>{{ news }}</span>
+  {% endif %}
+</nav>

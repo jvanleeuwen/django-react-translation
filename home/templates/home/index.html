@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block catalog %}
+  <script type="text/javascript" src="{% url 'home:javascript-catalog' %}"></script>
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+
+  <script src="{% static 'home.js' %}"></script>
+{% endblock %}
+
+{% block menu %}
+  {% include 'menu.html' with active='home' %}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="four columns">
+      <h5> </h5>
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>gettext</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>client</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>pgettext (context)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code>it works contextual</code>
+              <code>client</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>it works contextual</code>
+              <code>counselor</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>ugettext (plural)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code>There are %s clients</code>
+              <code>2</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>There are %s counselors</code>
+              <code>1</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>format</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code>Date</code>
+              <code>DATE_FORMAT</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="four columns">
+      <h5>Django</h5>
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{% trans 'It works' %}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{% trans 'It works contextual' context 'client' %}</td>
+          </tr>
+          <tr>
+            <td>{% trans 'It works contextual' context 'counselor' %}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {% blocktrans trimmed count amount=2 %}
+                There is one client.
+                {% plural %}
+                There are {{ amount }} clients.
+              {% endblocktrans %}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {% blocktrans trimmed count amount=1 %}
+                There is one counselor.
+                {% plural %}
+                There are {{ amount }} counselors.
+              {% endblocktrans %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {% now 'DATE_FORMAT' %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="four columns">
+      <h5>React + djangojs</h5>
+      <div id="container"></div>
+    </div>
+  </div>
+{% endblock %}
