@@ -23,7 +23,10 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, 'home'),
+          path.resolve(__dirname, 'news'),
+        ],
       },
     ],
   },

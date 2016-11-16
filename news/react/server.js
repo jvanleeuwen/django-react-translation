@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.post('/', (req, res) => {
   const { locale_path } = req.body;
 
-  fetch(`http://localhost:8000${locale_path}`)
+  fetch(`http://localhost:8000${locale_path}`) // eslint-disable-line
     .then((response) => {
       if (response.status >= 400) {
         throw new Error('Bad response from server');
@@ -45,16 +45,19 @@ app.post('/', (req, res) => {
           });
 
           const component = ReactDOM.renderToString(
-            React.createElement(JedContainer.default, { jed })
+            React.createElement(JedContainer.default, { jed }) // eslint-disable-line
           );
 
-          console.log(chalk.green('=> Processed render request'));
+          console.log(chalk.green(`=> Processed render request: ${language}`)); // eslint-disable-line
 
           res.send(component);
+        })
+        .catch((err) => {
+          console.log(chalk.red(`=> Error rendering request: ${err}`)); // eslint-disable-line
         });
     });
 });
 
 app.listen(3010, () => (
-  console.log(chalk.green('=> Server started on port 3010'))
+  console.log(chalk.green('=> Server started on port 3010')) // eslint-disable-line
 ));

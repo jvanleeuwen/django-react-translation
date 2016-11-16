@@ -1,9 +1,6 @@
 import React from 'react';
 import strftime from 'strftime';
-import { gettext, pgettext, ngettext, interpolate, get_format } from 'django';
-
-// import { interpolate, get_format, ngettext } from 'django';
-// import { gettext, pgettext } from './../utils/translate';
+import { gettext, pgettext, ngettext, interpolate, get_format } from 'django'; // eslint-disable-line
 
 const DATE_FORMAT = get_format('DATE_INPUT_FORMATS')[0];
 
