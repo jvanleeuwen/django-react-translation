@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
@@ -19,8 +20,9 @@ module.exports = {
     ],
   },
 
+  devtool: 'source-map',
+
   output: {
-    path: __dirname,
     publicPath: '/static/',
     filename: '[name].js',
   },

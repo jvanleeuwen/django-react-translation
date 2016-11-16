@@ -3,11 +3,12 @@
     "react",
     "esnext"
   ],
-  "plugins": [
-    // ["babel-gettext-plugin", {
-    //  "functionNames": {
-    //    "__": ["msgid"]
-    //  }
-    // }],
-  ]
+  "env": {
+    "production": {
+      "presets": ["react-optimize"]
+    },
+    "development": {
+      // "plugins": ["babel-gettext-plugin"]
+    }
+  }
 }
