@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const HappyPack = require('happypack');
+const OfflinePlugin = require('offline-plugin');
 
 module.exports = {
 
@@ -22,7 +24,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'happypack/loader?id=js',
         include: [
           path.resolve(__dirname, 'home'),
           path.resolve(__dirname, 'news'),
@@ -36,8 +38,23 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js' }),
-    new webpack.DefinePlugin({ MARK_TRANSLATIONS: false }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.js',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+    new HappyPack({
+      id: 'js',
+      loaders: ['babel?cacheDirectory'],
+    }),
+    new OfflinePlugin({
+      relativePaths: false,
+      publicPath: '/static/',
+    }),
   ],
 
 };

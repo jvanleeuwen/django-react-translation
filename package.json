@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
+    "happypack": "^2.2.1",
     "webpack": "^2.1.0-beta.12",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
@@ -41,6 +42,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jed": "^1.1.1",
     "lodash": "^4.16.6",
+    "offline-plugin": "^3.4.2",
     "react": "15.4.0",
     "react-dom": "15.4.0",
     "react-hot-loader": "^3.0.0-beta.2",

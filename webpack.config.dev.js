@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HappyPack = require('happypack');
 
 module.exports = {
 
@@ -20,8 +21,6 @@ module.exports = {
     ],
   },
 
-  devtool: 'source-map',
-
   output: {
     publicPath: '/static/',
     filename: '[name].js',
@@ -31,14 +30,11 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'happypack/loader?id=js',
         include: [
           path.resolve(__dirname, 'home'),
           path.resolve(__dirname, 'news'),
         ],
-        query: {
-          cacheDirectory: true,
-        },
       },
     ],
   },
@@ -49,8 +45,23 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js' }),
-    new webpack.DefinePlugin({ MARK_TRANSLATIONS: false }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.js',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
+    new HappyPack({
+      id: 'js',
+      loaders: ['babel?cacheDirectory'],
+    }),
+    new webpack.SourceMapDevToolPlugin({
+      filename: '[file].map',
+      exclude: /vendor/,
+    }),
   ],
 
 };
