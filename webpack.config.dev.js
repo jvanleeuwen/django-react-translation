@@ -16,6 +16,7 @@ module.exports = {
       './news/react/index.js',
     ],
     vendor: [
+      'classnames',
       'react',
       'react-dom',
     ],
@@ -31,6 +32,14 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'happypack/loader?id=js',
+        include: [
+          path.resolve(__dirname, 'home'),
+          path.resolve(__dirname, 'news'),
+        ],
+      },
+      {
+        test: /\.css$/,
+        loader: 'happypack/loader?id=css',
         include: [
           path.resolve(__dirname, 'home'),
           path.resolve(__dirname, 'news'),
@@ -57,6 +66,10 @@ module.exports = {
     new HappyPack({
       id: 'js',
       loaders: ['babel?cacheDirectory'],
+    }),
+    new HappyPack({
+      id: 'css',
+      loaders: ['style!css?module'],
     }),
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',

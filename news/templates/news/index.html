@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'shared/base.html' %}
 
 {% load static %}
 
@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block menu %}
-  {% include 'menu.html' with active='news' %}
+  {% include 'shared/menu.html' with active='news' %}
 {% endblock %}
 
 {% block js %}

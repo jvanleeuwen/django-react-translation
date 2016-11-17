@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'website',
+    'website.shared',
     'website.home',
     'website.news',
 ]

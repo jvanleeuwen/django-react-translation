@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HappyPack = require('happypack');
 const OfflinePlugin = require('offline-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
@@ -9,13 +10,14 @@ module.exports = {
     home: './home/react/index.js',
     news: './news/react/index.js',
     vendor: [
+      'classnames',
       'react',
       'react-dom',
     ],
   },
 
   output: {
-    path: path.resolve(__dirname, 'static/'),
+    path: path.resolve(__dirname, 'static'),
     publicPath: '/static/',
     filename: '[name].js',
   },
@@ -29,6 +31,13 @@ module.exports = {
           path.resolve(__dirname, 'home'),
           path.resolve(__dirname, 'news'),
         ],
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style',
+          loader: 'css',
+        }),
       },
     ],
   },
@@ -47,6 +56,7 @@ module.exports = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
+    new ExtractTextPlugin('styles.css'),
     new HappyPack({
       id: 'js',
       loaders: ['babel?cacheDirectory'],

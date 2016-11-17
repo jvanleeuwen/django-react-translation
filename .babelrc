@@ -6,9 +6,6 @@
   "env": {
     "production": {
       "presets": ["react-optimize"]
-    },
-    "development": {
-      // "plugins": ["babel-gettext-plugin"]
     }
   }
 }

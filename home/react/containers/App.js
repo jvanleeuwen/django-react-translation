@@ -1,11 +1,16 @@
 import React from 'react';
 import strftime from 'strftime';
+import classNames from 'classnames/bind';
 import { gettext, pgettext, ngettext, interpolate, get_format } from 'django'; // eslint-disable-line
+
+import styles from './styles.css';
+
+const cx = classNames.bind(styles);
 
 const DATE_FORMAT = get_format('DATE_INPUT_FORMATS')[0];
 
 export default () => (
-  <div>
+  <div className={cx('App')}>
     <table className="u-full-width">
       <thead>
         <tr>
