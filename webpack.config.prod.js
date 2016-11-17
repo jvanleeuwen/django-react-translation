@@ -36,7 +36,13 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
-          loader: 'css',
+          loader: {
+            loader: 'css',
+            query: {
+              module: true,
+              localIdentName: '[local]_[hash:base64:5]',
+            },
+          },
         }),
       },
     ],

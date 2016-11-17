@@ -69,7 +69,7 @@ module.exports = {
     }),
     new HappyPack({
       id: 'css',
-      loaders: ['style!css?module'],
+      loaders: ['style!css?module&localIdentName=[local]_[hash:base64:5]'],
     }),
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',
