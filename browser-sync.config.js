@@ -23,4 +23,13 @@ module.exports = {
     webpackHotMiddleware(bundler),
   ],
 
+  rewriteRules: [
+    {
+      match: /vendor.js/g,
+      fn: (req, res, match) => {
+        return 'vendor.dll.js';
+      },
+    },
+  ],
+
 };

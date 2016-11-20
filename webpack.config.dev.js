@@ -17,11 +17,6 @@ module.exports = {
       'webpack-hot-middleware/client',
       './news/react/index.js',
     ],
-    vendor: [
-      'classnames',
-      'react',
-      'react-dom',
-    ],
   },
 
   output: {
@@ -60,14 +55,14 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.js',
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
       },
+    }),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname),
+      manifest: require(path.resolve(__dirname, 'static', 'vendor.json')), // eslint-disable-line
     }),
     new HappyPack({
       id: 'js',

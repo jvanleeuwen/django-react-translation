@@ -9,11 +9,6 @@ module.exports = {
   entry: {
     home: './home/react/index.js',
     news: './news/react/index.js',
-    vendor: [
-      'classnames',
-      'react',
-      'react-dom',
-    ],
   },
 
   output: {
