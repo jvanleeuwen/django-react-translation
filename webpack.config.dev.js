@@ -4,6 +4,8 @@ const HappyPack = require('happypack');
 
 module.exports = {
 
+  cache: true,
+
   entry: {
     home: [
       'react-hot-loader/patch',
@@ -46,6 +48,10 @@ module.exports = {
         ],
       },
     ],
+  },
+
+  resolve: {
+    extensions: ['.js', '.css'],
   },
 
   externals: {
