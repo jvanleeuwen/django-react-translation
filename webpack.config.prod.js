@@ -30,17 +30,25 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style',
+          fallbackLoader: 'style-loader',
           loader: {
-            loader: 'css',
+            loader: 'css-loader',
             query: {
               module: true,
               localIdentName: '[local]_[hash:base64:5]',
             },
           },
         }),
+        include: [
+          path.resolve(__dirname, 'home'),
+          path.resolve(__dirname, 'news'),
+        ],
       },
     ],
+  },
+
+  resolve: {
+    extensions: ['.js', '.css'],
   },
 
   externals: {
@@ -60,7 +68,7 @@ module.exports = {
     new ExtractTextPlugin('styles.css'),
     new HappyPack({
       id: 'js',
-      loaders: ['babel?cacheDirectory'],
+      loaders: ['babel-loader'],
     }),
     new OfflinePlugin({
       relativePaths: false,

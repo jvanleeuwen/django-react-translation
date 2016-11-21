@@ -19,11 +19,9 @@ requestAnimationFrame(() => {
 
   if (module.hot) {
     module.hot.accept('./containers/App', () => {
-      const NextApp = require('./containers/App').default;
-
       render(
         <AppContainer>
-          <NextApp />
+          <App />
         </AppContainer>,
         document.getElementById('container'),
       );

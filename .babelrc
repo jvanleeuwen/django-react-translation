@@ -6,6 +6,9 @@
   "env": {
     "production": {
       "presets": ["react-optimize"]
+    },
+    "development": {
+      "plugins": ["react-hot-loader/babel"]
     }
   }
 }
